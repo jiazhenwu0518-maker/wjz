@@ -1,0 +1,154 @@
+ <section class="contact-section">
+          <h2 class="contact-title">聯絡我</h2>
+          <form id="contactForm">
+              <div class="contact-grid">
+                  <input type="text" id="name" placeholder="姓名" required>
+                  <input type="email" id="email" placeholder="Email" required>
+                  <textarea id="message" rows="4" placeholder="留言" required></textarea>
+                  <button type="submit" class="submit-btn">送出</button>
+              </div>
+          </form>
+      </section>
+  </div>
+
+  <script>
+      // Headshot upload preview
+      const headshotInput = document.getElementById('headshotInput');
+      const headshotImg = document.getElementById('headshotImg');
+      const placeholderText = document.getElementById('placeholderText');
+      const headshotContainer = document.querySelector('.headshot-container');
+
+      // Click container to trigger file input
+      headshotContainer.addEventListener('click', () => {
+          headshotInput.click();
+      });
+
+      // When file selected, preview
+      headshotInput.addEventListener('change', function(e) {
+          const file = e.target.files[0];
+          if (file) {
+              const reader = new FileReader();
+              reader.onload = function(event) {
+                  headshotImg.src = event.target.result;
+                  headshotImg.style.display = 'block';
+                  placeholderText.style.display = 'none';
+              };
+              reader.readAsDataURL(file);
+          }
+      });
+
+      // 表單提交處理
+      document.getElementById('contactForm').addEventListener('submit', function(e) {
+          e.preventDefault(); // 防止表單重整
+
+          // 顯示成功提示
+          alert('留言已成功送出！');
+
+          // 清空表單欄位
+          document.getElementById('name').value = '';
+          document.getElementById('email').value = '';
+          document.getElementById('message').value = '';
+
+          // 聚焦到姓名欄位（視覺上清空後的回饋）
+          document.getElementById('name').focus();
+      });
+  </script>請幫我改成表格
+
+● I'll convert the contact form to a table-based layout. Let me transform the current HTML form into a clean table structure while preserving all the
+  functionality.
+
+  <section class="contact-section">
+      <h2 class="contact-title">聯絡我</h2>
+      <table class="contact-table">
+          <tbody>
+              <tr>
+                  <td class="label-cell">姓名</td>
+                  <td><input type="text" id="name" placeholder="姓名" required></td>
+              </tr>
+              <tr>
+                  <td class="label-cell">Email</td>
+                  <td><input type="email" id="email" placeholder="Email" required></td>
+              </tr>
+              <tr>
+                  <td class="label-cell">留言</td>
+                  <td><textarea id="message" rows="4" placeholder="留言" required></textarea></td>
+              </tr>
+              <tr>
+                  <td colspan="2" class="submit-cell">
+                      <button type="submit" class="submit-btn">送出</button>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+  </section>
+
+  <script>
+      // Headshot upload preview
+      const headshotInput = document.getElementById('headshotInput');
+      const headshotImg = document.getElementById('headshotImg');
+      const placeholderText = document.getElementById('placeholderText');
+      const headshotContainer = document.querySelector('.headshot-container');
+
+      // Click container to trigger file input
+      headshotContainer.addEventListener('click', () => {
+          headshotInput.click();
+      });
+
+      // When file selected, preview
+      headshotInput.addEventListener('change', function(e) {
+          const file = e.target.files[0];
+          if (file) {
+              const reader = new FileReader();
+              reader.onload = function(event) {
+                  headshotImg.src = event.target.result;
+                  headshotImg.style.display = 'block';
+                  placeholderText.style.display = 'none';
+              };
+              reader.readAsDataURL(file);
+          }
+      });
+
+      // 表單提交處理
+      document.querySelector('.contact-table').addEventListener('submit', function(e) {
+          e.preventDefault(); // 防止表單重整
+
+          // 顯示成功提示
+          alert('留言已成功送出！');
+
+          // 清空表單欄位
+          document.getElementById('name').value = '';
+          document.getElementById('email').value = '';
+          document.getElementById('message').value = '';
+
+          // 聚焦到姓名欄位（視覺上清空後的回饋）
+          document.getElementById('name').focus();
+      });
+  </script>
+
+  <style>
+  .contact-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+  }
+
+  .contact-table .label-cell {
+      width: 30%;
+      padding: 10px;
+      vertical-align: top;
+      font-weight: bold;
+  }
+
+  .contact-table .submit-cell {
+      padding: 15px;
+      text-align: center;
+      border-top: 2px solid #e0e0e0;
+  }
+
+  .contact-table input,
+  .contact-table textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
