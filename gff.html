@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Portfolio</title>
+<style>
+    /* ---------- Base Layout ---------- */
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{
+        font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+        background:#f5f7fa;color:#333;line-height:1.6;padding:20px;
+    }
+    .container{max-width:800px;margin:0 auto;}
+
+    /* ---------- Header ---------- */
+    header{
+        text-align:center;padding:40px 0;
+    }
+    .name{font-size:3.5rem;margin-bottom:15px;color:#2c3e50;}
+    
+    /* 自我介紹輸入框樣式 */
+    .intro-input {
+        font-size: 1.2rem;
+        color: #34495e;
+        margin-bottom: 30px;
+        text-align: center;
+        border: 2px dashed #cbd5e1;
+        background: #ffffff;
+        padding: 10px 15px;
+    }
+    .intro-input:focus {
+        border-style: solid;
+        border-color: #3498db;
+    }
+
+    .headshot-container{
+        position:relative;width:200px;height:200px;margin:0 auto;
+        border-radius:50%;background:#ddd;display:flex;
+        align-items:center;justify-content:center;overflow:hidden;
+        box-shadow:0 4px 12px rgba(0,0,0,.1);cursor:pointer;
+    }
+    .headshot-placeholder{
+        width:100%;height:100%;background:#3498db;border-radius:50%;
+        display:flex;align-items:center;justify-content:center;
+    }
+    .headshot-placeholder-text{font-size:2rem;font-weight:bold;color:#fff;
+        text-shadow:1px 1px 2px rgba(0,0,0,.3);}
+    #headshotImg{
+        width:100%;height:100%;object-fit:cover;display:none;
+    }
+    .headshot-btn{
+        margin-top:20px;color:#7f8c8d;cursor:pointer;font-size:.9rem;
+    }
+    .headshot-btn:hover{color:#3498db;}
+
+    /* ---------- Projects (已修改為填空輸入框) ---------- */
+    .projects-container{
+        max-width:1200px;margin:60px auto;padding:0 20px;
+    }
+    .section-title{
+        text-align:center;font-size:2.5rem;margin-bottom:50px;color:#2c3e50;
+    }
+    .projects-grid{
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+        gap:30px;max-width:1000px;margin:0 auto;
+    }
+    .project-card{
+        background:#fff;padding:25px;border-radius:10px;
+        box-shadow:0 4px 15px rgba(0,0,0,.1);
+        transition:transform .3s,box-shadow .3s;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+    .project-card:hover{
+        transform:translateY(-5px);
+        box-shadow:0 8px 25px rgba(0,0,0,.15);
+    }
+    
+    /* 專案卡片內的填空框樣式 */
+    .project-title-input {
+        font-size: 1.25rem !important;
+        font-weight: bold;
+        color: #3498db !important;
+    }
+    .project-desc-input {
+        resize: vertical;
+        min-height: 100px;
+        color: #555;
+    }
+    .project-link-input {
+        font-size: 0.9rem !important;
+        color: #7f8c8d;
+    }
+
+    @media(max-width:768px){
+        .projects-grid{grid-template-columns:1fr;}
+        .section-title{font-size:2rem;}
+    }
+
+    /* ---------- Contact ---------- */
+    .contact-section{
+        max-width:800px;margin:0 auto;padding:20px;
+    }
+    .contact-title{
+        text-align:center;font-size:1.8rem;margin-bottom:30px;color:#2c3e50;
+    }
+    .contact-grid{
+        display:grid;grid-template-columns:repeat(4,1fr);gap:15px;
+        padding:30px;background:#fff;border-radius:10px;
+        box-shadow:0 4px 12px rgba(0,0,0,.08);
+    }
+    @media(max-width:768px){.contact-grid{grid-template-columns:1fr;}}
+
+    input,textarea{
+        width:100%;padding:12px 15px;border:2px solid #ddd;border-radius:10px;
+        font-family:inherit;font-size:1rem;transition:all .3s;
+    }
+    input:focus,textarea:focus{border-color:#3498db;outline:none;}
+
+    .submit-btn{
+        background:#3498db;color:#fff;
+        padding:14px 32px;border:none;border-radius:30px;
+        font-size:1.1rem;font-weight:600;cursor:pointer;
+        box-shadow:0 5px 15px rgba(52,152,219,.3);
+        transition:all .3s;
+    }
+    .submit-btn:hover{
+        background:#2980b9;transform:translateY(-2px);
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1 class="name">Your Name Here</h1>
+        <input type="text" class="intro-input" placeholder="請輸入自我介紹" value="Web Developer & Designer passionate about creating beautiful, functional web experiences">
+        
+        <div class="headshot-container">
+            <input type="file" id="headshotInput" accept="image/*" style="display:none;">
+            <div class="headshot-placeholder">
+                <img id="headshotImg" src="" alt="Headshot">
+                <div id="placeholderText" class="headshot-placeholder-text">Upload Your Photo</div>
+            </div>
+        </div>
+    </header>
+
+    <section class="projects-container">
+        <h2 class="section-title">My Projects</h2>
+        <div class="projects-grid">
+            
+            <div class="project-card">
+                <input type="text" class="project-title-input" placeholder="請輸入專案名稱" value="E-Commerce Website">
+                <textarea class="project-desc-input" placeholder="請輸入專案描述">A full-featured online shopping platform with product catalog, cart functionality, and secure payment processing. Built using modern web technologies for optimal performance.</textarea>
+                <input type="url" class="project-link-input" placeholder="專案連結 (例：https://...)">
+            </div>
+
+            <div class="project-card">
+                <input type="text" class="project-title-input" placeholder="請輸入專案名稱" value="Task Management App">
+                <textarea class="project-desc-input" placeholder="請輸入專案描述">Intuitive project and task management tool with drag-and-drop functionality, real-time collaboration features, and comprehensive reporting capabilities.</textarea>
+                <input type="url" class="project-link-input" placeholder="專案連結 (例：https://...)">
+            </div>
+
+            <div class="project-card">
+                <input type="text" class="project-title-input" placeholder="請輸入專案名稱" value="Weather Dashboard">
+                <textarea class="project-desc-input" placeholder="請輸入專案描述">Real-time weather visualization application with interactive charts, location-based forecasts, and current conditions from multiple weather sources.</textarea>
+                <input type="url" class="project-link-input" placeholder="專案連結 (例：https://...)">
+            </div>
+
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <h2 class="contact-title">聯絡我</h2>
+        <form id="contactForm">
+            <div class="contact-grid">
+                <input type="text" id="name" placeholder="姓名" required>
+                <input type="email" id="email" placeholder="Email" required>
+                <textarea id="message" rows="4" placeholder="留言" required></textarea>
+                <button type="submit" class="submit-btn">送出</button>
+            </div>
+        </form>
+    </section>
+</div>
+
+<script>
+    // Headshot upload preview
+    const headshotInput = document.getElementById('headshotInput');
+    const headshotImg = document.getElementById('headshotImg');
+    const placeholderText = document.getElementById('placeholderText');
+    const headshotContainer = document.querySelector('.headshot-container');
+
+    // Click container to trigger file input
+    headshotContainer.addEventListener('click', () => {
+        headshotInput.click();
+    });
+
+    // When file selected, preview
+    headshotInput.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                headshotImg.src = event.target.result;
+                headshotImg.style.display = 'block';
+                placeholderText.style.display = 'none';
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // 表單提交處理
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault(); // 防止表單重整
+
+        // 顯示成功提示
+        alert('留言已成功送出！');
+
+        // 清空表單欄位
+        document.getElementById('name').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('message').value = '';
+
+        // 聚焦到姓名欄位（視覺上清空後的回饋）
+        document.getElementById('name').focus();
+    });
+</script>
+</body>
+</html>
