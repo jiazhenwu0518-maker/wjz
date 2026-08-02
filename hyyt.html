@@ -63,6 +63,28 @@
         box-shadow:0 4px 12px rgba(0,0,0,.1);cursor:pointer;
         transition: background-color 0.4s ease;
     }
+    .headshot-delete-btn{
+        position:absolute;
+        top:-10px;
+        right:-10px;
+        width:24px;
+        height:24px;
+        border-radius:50%;
+        background:#e74c3c;
+        color:#fff;
+        border:none;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        cursor:pointer;
+        z-index:10;
+        box-shadow:0 2px 6px rgba(0,0,0,.3);
+        transition:all .3s;
+    }
+    .headshot-delete-btn:hover{
+        transform:scale(1.1);
+        box-shadow:0 4px 8px rgba(0,0,0,.4);
+    }
     .headshot-placeholder{
         width:100%;height:100%;background:#3498db;
         border-radius:10px;
@@ -267,6 +289,7 @@
                 <img id="headshotImg" src="" alt="Headshot">
                 <div id="placeholderText" class="headshot-placeholder-text">Upload Your Photo</div>
             </div>
+            <button class="headshot-delete-btn" id="headshotDeleteBtn" style="display:none;">×</button>
         </div>
 
         <textarea class="intro-input" placeholder="請輸入自我介紹"></textarea>
@@ -346,9 +369,20 @@
                 headshotImg.src = event.target.result;
                 headshotImg.style.display = 'block';
                 placeholderText.style.display = 'none';
+                headshotDeleteBtn.style.display = 'flex';
             };
             reader.readAsDataURL(file);
         }
+    });
+
+    // Delete headshot
+    headshotDeleteBtn.addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevent triggering the file input
+        headshotImg.src = '';
+        headshotImg.style.display = 'none';
+        placeholderText.style.display = 'block';
+        headshotDeleteBtn.style.display = 'none';
+        headshotInput.value = ''; // Clear the file input
     });
 
     // 表單提交處理
