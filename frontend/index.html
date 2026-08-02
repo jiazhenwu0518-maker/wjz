@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            light: {
+              bg: '#f5f7fa',
+              text: '#333333',
+              card: '#ffffff',
+              border: '#cbd5e1',
+              primary: '#3498db',
+              primaryHover: '#2980b9'
+            },
+            dark: {
+              bg: '#1a1b26',
+              text: '#e0e0e0',
+              card: '#24283b',
+              border: '#414868',
+              primary: '#7aa2f7',
+              inputBg: '#1a1b26',
+              placeholder: '#7982a9'
+            }
+          },
+          transitionDuration: {
+            '400': '400ms',
+          }
+        }
+      }
+    }
+  </script>
+  </head>
+<body>
+  <div id="root"></div>
+  <script type="module" src="./index.tsx"></script>
+<script type="module" src="/index.js"></script></body>
+</html>
